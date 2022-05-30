@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\EspecieController;
+use App\Http\Controllers\EspeciesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('/mascota/{color}', [MascotaController::class, 'show']);
 Route::get('/especie', [EspecieController::class, 'show']);
+Route::resource('especies', EspeciesController::class);
 
 /**
  * BEGIN: Injected from .gp/snippets/laravel/routes/web/allow-mixed-web.snippet
