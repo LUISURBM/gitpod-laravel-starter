@@ -395,6 +395,7 @@ pm.max_children = 5
 pm.start_servers = 2
 pm.min_spare_servers = 1
 pm.max_spare_servers = 3" > "$2"
+php_admin_value[extension]=mongodb.so
 }
 
 # Call functions from this script gracefully
