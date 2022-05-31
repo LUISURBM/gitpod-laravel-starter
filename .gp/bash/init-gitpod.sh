@@ -203,12 +203,12 @@ if [ ! -d "$GITPOD_REPO_ROOT/vendor" ]; then
   fi
   # END: Laravel .env injection
 
-  # Create laravel database if it does not exist
-  __laravel_db_exists=$(mysqlshow  2>/dev/null | grep laravel >/dev/null 2>&1 && echo "1" || echo "0")
-  if [[ $__laravel_db_exists == 0 ]]; then
-    msg="Creating database: laravel"
+  # Create veterinaria database if it does not exist
+  __veterinaria_db_exists=$(mysqlshow  2>/dev/null | grep veterinaria >/dev/null 2>&1 && echo "1" || echo "0")
+  if [[ $__veterinaria_db_exists == 0 ]]; then
+    msg="Creating database: veterinaria"
     log_silent "$msg" && start_spinner "$msg"
-    mysql -e "CREATE DATABASE laravel;"
+    mysql -e "CREATE DATABASE veterinaria;"
     err_code=$?
     if [ $err_code != 0 ]; then
       stop_spinner $err_code

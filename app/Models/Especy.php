@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Mascota
+ * Class Especy
  * 
  * @property int $id
  * @property Carbon|null $created_at
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Mascota extends Model
+class Especy extends Model
 {
-	protected $table = 'mascotas';
+	protected $table = 'especies';
 }

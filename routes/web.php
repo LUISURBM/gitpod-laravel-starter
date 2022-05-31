@@ -21,7 +21,6 @@ Route::get('/', function () {
 });
 
 Route::get('/mascota/{color}', [MascotaController::class, 'show']);
-Route::get('/especie', [EspecieController::class, 'show']);
 Route::resource('especies', EspeciesController::class);
 
 /**

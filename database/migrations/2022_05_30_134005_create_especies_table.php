@@ -13,8 +13,8 @@ class CreateEspeciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('especies', function (Blueprint $table) {
-            $table->id();
+        Schema::create('especie', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nombre');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateEspeciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especies');
+        Schema::dropIfExists('especie');
     }
 }

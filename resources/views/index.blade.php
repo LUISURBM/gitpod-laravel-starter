@@ -20,13 +20,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($especie as $especies)
+        @foreach($especie as $esp)
         <tr>
-            <td>{{$especies->id}}</td>
-            <td>{{$especies->nombre}}</td>
+            <td>{{$esp->id}}</td>
+            <td>{{$esp->nombre}}</td>
             <td class="text-center">
-                <a href="{{ route('especies.edit', $especies->id)}}" class="btn btn-primary btn-sm"">Edit</a>
-                <form action="{{ route('especies.destroy', $especies->id)}}" method="post" style="display: inline-block">
+                <a href="{{ route('especies.edit', $esp->id)}}" class="btn btn-primary btn-sm"">Edit</a>
+                <form action="{{ route('especies.destroy', $esp->id)}}" method="post" style="display: inline-block">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm"" type="submit">Delete</button>
