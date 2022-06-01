@@ -700,6 +700,118 @@
                   </div>
                 </div>
 
+
+                <!-- Form Mascota -->
+                <div class="col-md-6">
+                  <div class="card mb-4">
+                    <h5 class="card-header">Información de Mascota</h5>
+                    <div class="card-body">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombres</label>
+                        <input
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Los nombres de tu mascota"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlReadOnlyInput1" class="form-label">Código interno</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="exampleFormControlReadOnlyInput1"
+                          placeholder="Código interno asignado por la clínica"
+                          readonly
+                        />
+                      </div>
+                      <div class="mb-3 ">
+                        <label for="html5-date-input" class="form-label">Fecha nacimiento</label>
+                          <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
+                      </div>
+                      <div class="mb-3 ">
+                        <label for="html5-date-input" class="form-label">Fecha adquisición</label>
+                          <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="colorPet">Color</label>
+                        <input class="form-control" type="color" id="colorPet" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlSelect1" class="form-label">Especie</label>
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                          <option selected> -- Selecciona la especie de tu mascota -- </option>
+                          <option value="1">Mamíferos</option>
+                          <option value="1">Aves</option>
+                          <option value="1">Reptiles</option>
+                          <option value="1">Ranas y sapos</option>
+                          <option value="1">Peces</option>
+                          <option value="1">Ciempiés y milpiés</option>
+                          <option value="1">Arañas y alacranes</option>
+                          <option value="1">Insectos</option>
+                          <option value="1">Cangrejos y camarones</option>
+                          <option value="1">Estrellas y erizos</option>
+                          <option value="1">Caracoles, almejas y pulpos</option>
+                          <option value="1">Lombrices y gusanos marinos</option>
+                          <option value="1">Rotíferos</option>
+                          <option value="1">Gusanos planos</option>
+                          <option value="1">Medusas y corales</option>
+                          <option value="1">Esponjas</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleDataList" class="form-label">Raza</label>
+                        <input
+                          class="form-control"
+                          list="razaOptions"
+                          id="exampleDataList"
+                          placeholder="Selecciona la raza de tu mascota"
+                        />
+                        <datalist id="razaOptions">
+                          <option value="Sirenia (manatíes y dugongos)"></option>
+                          <option value="Cingulata (armadillos)"></option>
+                          <option value="Pilosa (osos hormigueros, perezosos y tamanduas)"></option>
+                          <option value="Primates"></option>
+                          <option value="Rodentia (roedores)"></option>
+                          <option value="Lagomorpha (lagomorfos)"></option>
+                          <option value="Chiroptera (murciélagos)"></option>
+                          <option value="Cetacea (ballenas y delfines)"></option>
+                          <option value="Carnivora (carnívoros)"></option>
+                          <option value="Eulipotyphla (erizos, gimnuros, topos, musarañas, desmanes y solenodontes.)"></option>
+                          <option value="Perissodactyla (ungulados con número impar de pezuñas)"></option>
+                          <option value="Artiodactyla (ungulados con número par de pezuñas)"></option>
+                          <option value="Didelphimorphia (zarigüeyas comunes)"></option>
+                          <option value="Paucituberculata (zarigüeyas musaraña)"></option>
+                        </datalist>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlSelect2" class="form-label">Género</label>
+                        <select
+                          multiple
+                          class="form-select"
+                          id="exampleFormControlSelect2"
+                          aria-label="Multiple select example"
+                        >
+                          <option selected>-- Selecciona el género de tu mascota --</option>
+                          <option value="1">No aplica</option>
+                          <option value="1">Hermafrodita</option>
+                          <option value="1">Femenino</option>
+                          <option value="2">Masculino</option>
+                        </select>
+                      </div>
+                      <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                        <label class="form-check-label" for="flexSwitchCheckDefault"
+                          >Esterilizad@</label
+                        >
+                      </div>
+                      <div>
+                        <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Input Sizing -->
                 <div class="col-md-6">
                   <div class="card mb-4">
