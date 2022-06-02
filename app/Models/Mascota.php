@@ -20,5 +20,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Mascota extends Model
 {
-	protected $table = 'mascotas';
+	protected $table = 'veterinaria.mascota';
+	protected $fillable = [
+		'nacimiento',
+    'adquisicion',
+    'nombre',
+    'codigo',
+    'color',
+    'obervaciones',
+    'esterilizado',
+    'raza_id',
+    'genero_id',
+    'especie_id'
+	];
 }

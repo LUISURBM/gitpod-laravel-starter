@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMascotasTable extends Migration
+class CreateResponsableMascotasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateMascotasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mascotas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('responsable_mascotas', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateMascotasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mascotas');
+        Schema::dropIfExists('responsable_mascotas');
     }
 }

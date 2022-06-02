@@ -8,6 +8,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
 /**
  * Class User
@@ -24,26 +26,22 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class User extends Model
+class User extends Model implements AuthenticatableContract
 {
-	protected $table = 'users';
-
+	protected $table = 'veterinaria.user';
+  use Authenticatable;
 	protected $dates = [
 		'email_verified_at'
 	];
 
 	protected $hidden = [
-		'password',
-		'api_token',
-		'remember_token'
+		'api_token'
 	];
 
 	protected $fillable = [
-		'name',
-		'email',
+		'nombre',
+		'correo',
 		'email_verified_at',
-		'password',
-		'api_token',
-		'remember_token'
+		'api_token'
 	];
 }
