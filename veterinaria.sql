@@ -9,9 +9,13 @@ CREATE TABLE IF NOT EXISTS user(
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30),
     correo VARCHAR(50),
+    api_token VARCHAR(255),
+    email_verified_at TIMESTAMP DEFAULT NOW(),
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 ) ENGINE = InnoDB;
+
+insert into user (id, nombre, correo) values(0,'Luis Urbina', 'luisurbm@gmail.com');
 
 CREATE TABLE IF NOT EXISTS raza(
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -64,7 +68,7 @@ CREATE TABLE IF NOT EXISTS responsable(
     INDEX(cedula)
 ) ENGINE = InnoDB;
 
-insert into responsable (id, nombre, cedula, correo, nacimiento) values(0,'Luis Urbina', '1030592201', 'luisurbm@gmail.com', NOW());
+insert into responsable (id, nombre, cedula, correo, nacimiento, user_id) values(0,'Luis Urbina', '1030592201', 'luisurbm@gmail.com', NOW(), 1);
 
 CREATE TABLE IF NOT EXISTS mascota(
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
