@@ -34,7 +34,22 @@ CREATE TABLE IF NOT EXISTS especie(
     updated_at TIMESTAMP NULL DEFAULT NOW()
 ) ENGINE = InnoDB;
 
-insert into especie (id, nombre) values(0,'Atigrado');
+insert into especie (id, nombre) values(0,'Mamíferos');
+insert into especie (id, nombre) values(0,'Aves');
+insert into especie (id, nombre) values(0,'Reptiles');
+insert into especie (id, nombre) values(0,'Ranas y sapos');
+insert into especie (id, nombre) values(0,'Peces');
+insert into especie (id, nombre) values(0,'Ciempiés y milpiés');
+insert into especie (id, nombre) values(0,'Arañas y alacranes');
+insert into especie (id, nombre) values(0,'Insectos');
+insert into especie (id, nombre) values(0,'Cangrejos y camarones');
+insert into especie (id, nombre) values(0,'Estrellas y erizos');
+insert into especie (id, nombre) values(0,'Caracoles, almejas y pulpos');
+insert into especie (id, nombre) values(0,'Lombrices y gusanos marinos');
+insert into especie (id, nombre) values(0,'Rotíferos');
+insert into especie (id, nombre) values(0,'Gusanos planos');
+insert into especie (id, nombre) values(0,'Medusas y corales');
+insert into especie (id, nombre) values(0,'Esponjas');
 
 CREATE TABLE IF NOT EXISTS responsable(
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -48,6 +63,8 @@ CREATE TABLE IF NOT EXISTS responsable(
     FOREIGN KEY (user_id) REFERENCES user(id),
     INDEX(cedula)
 ) ENGINE = InnoDB;
+
+insert into responsable (id, nombre, cedula, correo, nacimiento) values(0,'Luis Urbina', '1030592201', 'luisurbm@gmail.com', NOW());
 
 CREATE TABLE IF NOT EXISTS mascota(
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -144,10 +161,15 @@ CREATE TABLE IF NOT EXISTS servicio(
     duracion_minutos INT(4),
     incapacidad_dias INT(4),
     valor_total INT(4),
-    sala_id INT(4) UNSIGNED,
+    sala_id INT(4) UNSIGNED NULL,
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 ) ENGINE = InnoDB;
+
+insert into servicio (id, nombre, fecha, duracion_minutos, incapacidad_dias, valor_total) values(0,'Consulta Veterinaria', now(), 25, 25, 25);
+insert into servicio (id, nombre, fecha, duracion_minutos, incapacidad_dias, valor_total) values(0,'Nebulizaciones', now(), 25, 25, 25);
+insert into servicio (id, nombre, fecha, duracion_minutos, incapacidad_dias, valor_total) values(0,'Profilaxis en perros y gatos', now(), 25, 25, 25);
+insert into servicio (id, nombre, fecha, duracion_minutos, incapacidad_dias, valor_total) values(0,'Procedimientos Menores', now(), 25, 25, 25);
 
 CREATE TABLE IF NOT EXISTS insumo_material(
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
