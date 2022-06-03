@@ -16,24 +16,12 @@ use App\Http\Controllers\EspeciesController;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
-
-// Route::get('/mascota/{color}', [MascotaController::class, 'show']);
-// Route::resource('especies', EspeciesController::class);
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
   /**
    * Home Routes
    */
-  Route::get('/', 'HomeController@index')->name('index');
-
-  /**
-   * Especie Routes
-   */
-  Route::get('/mascota', 'MascotaController@show')->name('mascota.show');
-  Route::post('/mascota', 'MascotaController@perform')->name('mascota.perform');
+  Route::get('/', 'HomeController@index')->name('home.index');
   
   Route::group(['middleware' => ['guest']], function () {
     /**
@@ -50,6 +38,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
   });
 
   Route::group(['middleware' => ['auth']], function () {
+    /**
+     * Home Routes
+     */
+    Route::get('/home', 'HomeController@index')->name('index');
+  
+    /**
+     * Especie Routes
+     */
+    Route::resource('mascota', 'MascotaController');
     /**
      * Logout Routes
      */
