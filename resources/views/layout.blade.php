@@ -135,6 +135,11 @@
                   <div data-i18n="Fluid">Raza</div>
                 </a>
               </li>
+              <li class="menu-item">
+                <a href="{{ route('consulta.index') }}" class="menu-link">
+                  <div data-i18n="Fluid">Atender consulta</div>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -171,7 +176,7 @@
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="{{ route('mascota.index') }}" class="menu-link" >
+                <a href="{{ route('mascota.index') }}" class="menu-link">
                   <div data-i18n="Basic">Mascotas</div>
                 </a>
               </li>
@@ -214,10 +219,22 @@
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Agendamiento</span></li>
           <!-- Cards -->
           <li class="menu-item">
-            <a href="cards-basic.html" class="menu-link">
+            <a href="cards-basic.html" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-collection"></i>
               <div data-i18n="Basic">Salas</div>
             </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="{{ route('turno.index') }}" class="menu-link">
+                  <div data-i18n="Accordion">Todas</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{ route('turno.fecha') }}" class="menu-link">
+                  <div data-i18n="Accordion">Nuevo</div>
+                </a>
+              </li>
+            </ul>
           </li>
           <!-- User interface -->
           <li class="menu-item">
@@ -232,7 +249,7 @@
                 </a>
               </li>
               <li class="menu-item">
-                <a href="ui-accordion.html" class="menu-link">
+                <a href="{{ route('turno.fecha') }}" class="menu-link">
                   <div data-i18n="Accordion">Por fecha</div>
                 </a>
               </li>

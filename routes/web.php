@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MascotaController;
-use App\Http\Controllers\EspecieController;
-use App\Http\Controllers\EspeciesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +44,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      * Especie Routes
      */
     Route::resource('mascota', 'MascotaController');
+    Route::resource('turno', 'TurnoController');
+    Route::get('turno-fecha', 'TurnoController@fecha')->name('turno.fecha');
+    Route::resource('consulta', 'ConsultaController');
+    Route::post('consulta-buscar', 'ConsultaController@buscar')->name('consulta.buscar');
     /**
      * Logout Routes
      */
