@@ -65,22 +65,22 @@
             </div>
             <div class="mb-3">
               <label for="exampleDataList" class="form-label">Raza</label>
-              <input class="form-control" list="razaOptions" id="exampleDataList" name="raza_id" placeholder="Selecciona la raza de tu mascota" value="{{ $mascota->raza }}" />
+              <input class="form-control" list="razaOptions" id="exampleDataList" name="raza_id" placeholder="Selecciona la raza de tu mascota" value="{{ $mascota->raza_id }}" />
               <datalist id="razaOptions">
-                <option value="1 ~ Sirenia (manatíes y dugongos)" {{ ( $mascota->raza_id == 1) ? 'selected' : '' }}>Sirenia (manatíes y dugongos)</option>
-                <option value="2 ~ Cingulata (armadillos)" {{ ( $mascota->raza_id == 2) ? 'selected' : '' }}>Cingulata (armadillos)</option>
-                <option value="3 ~ Pilosa (osos hormigueros, perezosos y tamanduas)" {{ ( $mascota->raza_id == 3) ? 'selected' : '' }}>Pilosa (osos hormigueros, perezosos y tamanduas)</option>
-                <option value="4 ~ Primates" {{ ( $mascota->raza_id == 4) ? 'selected' : '' }}>Primates</option>
-                <option value="5 ~ Rodentia (roedores)" {{ ( $mascota->raza_id == 5) ? 'selected' : '' }}>Rodentia (roedores)</option>
-                <option value="6 ~ Lagomorpha (lagomorfos)" {{ ( $mascota->raza_id == 6) ? 'selected' : '' }}>Lagomorpha (lagomorfos)</option>
-                <option value="7 ~ Chiroptera (murciélagos)" {{ ( $mascota->raza_id == 7) ? 'selected' : '' }}>Chiroptera (murciélagos)</option>
-                <option value="8 ~ Cetacea (ballenas y delfines)" {{ ( $mascota->raza_id == 8) ? 'selected' : '' }}>Cetacea (ballenas y delfines)</option>
-                <option value="9 ~ Carnivora (carnívoros)" {{ ( $mascota->raza_id == 9) ? 'selected' : '' }}>Carnivora (carnívoros)</option>
-                <option value="10 ~ Eulipotyphla (erizos, gimnuros, topos, musarañas, desmanes y solenodontes.)" {{ ( $mascota->raza_id == 10) ? 'selected' : '' }}>Eulipotyphla (erizos, gimnuros, topos, musarañas, desmanes y solenodontes.)</option>
-                <option value="11 ~ Perissodactyla (ungulados con número impar de pezuñas)" {{ ( $mascota->raza_id == 11) ? 'selected' : '' }}>Perissodactyla (ungulados con número impar de pezuñas)</option>
-                <option value="12 ~ Artiodactyla (ungulados con número par de pezuñas)" {{ ( $mascota->raza_id == 12) ? 'selected' : '' }}>Artiodactyla (ungulados con número par de pezuñas)</option>
-                <option value="13 ~ Didelphimorphia (zarigüeyas comunes)" {{ ( $mascota->raza_id == 13) ? 'selected' : '' }}>Didelphimorphia (zarigüeyas comunes)</option>
-                <option value="14 ~ Paucituberculata (zarigüeyas musaraña)" {{ ( $mascota->raza_id == 14) ? 'selected' : '' }}>Paucituberculata (zarigüeyas musaraña)</option>
+                <option value="1" {{ ( $mascota->raza_id == 1) ? 'selected' : '' }}>Sirenia (manatíes y dugongos)</option>
+                <option value="2" {{ ( $mascota->raza_id == 2) ? 'selected' : '' }}>Cingulata (armadillos)</option>
+                <option value="3" {{ ( $mascota->raza_id == 3) ? 'selected' : '' }}>Pilosa (osos hormigueros, perezosos y tamanduas)</option>
+                <option value="4" {{ ( $mascota->raza_id == 4) ? 'selected' : '' }}>Primates</option>
+                <option value="5" {{ ( $mascota->raza_id == 5) ? 'selected' : '' }}>Rodentia (roedores)</option>
+                <option value="6" {{ ( $mascota->raza_id == 6) ? 'selected' : '' }}>Lagomorpha (lagomorfos)</option>
+                <option value="7" {{ ( $mascota->raza_id == 7) ? 'selected' : '' }}>Chiroptera (murciélagos)</option>
+                <option value="8" {{ ( $mascota->raza_id == 8) ? 'selected' : '' }}>Cetacea (ballenas y delfines)</option>
+                <option value="9" {{ ( $mascota->raza_id == 9) ? 'selected' : '' }}>Carnivora (carnívoros)</option>
+                <option value="10" {{ ( $mascota->raza_id == 10) ? 'selected' : '' }}>Eulipotyphla (erizos, gimnuros, topos, musarañas, desmanes y solenodontes.)</option>
+                <option value="11" {{ ( $mascota->raza_id == 11) ? 'selected' : '' }}>Perissodactyla (ungulados con número impar de pezuñas)</option>
+                <option value="12" {{ ( $mascota->raza_id == 12) ? 'selected' : '' }}>Artiodactyla (ungulados con número par de pezuñas)</option>
+                <option value="13" {{ ( $mascota->raza_id == 13) ? 'selected' : '' }}>Didelphimorphia (zarigüeyas comunes)</option>
+                <option value="14" {{ ( $mascota->raza_id == 14) ? 'selected' : '' }}>Paucituberculata (zarigüeyas musaraña)</option>
               </datalist>
             </div>
             <div class="mb-3">
@@ -92,7 +92,7 @@
               </select>
             </div>
             <div class="form-check form-switch mb-2">
-              <input class="form-check-input" type="checkbox" id="esterilizado" name="esterilizado" value="{{ $mascota->esterilizado }}" {{ ( $mascota->esterilizado) ? 'checked' : '' }} />
+              <input class="form-check-input" type="checkbox" id="esterilizado" name="esterilizado" value="{{ $mascota->esterilizado }}" {{ ($mascota->esterilizado) ? 'checked' : '' }} />
               <label class="form-check-label" for="esterilizado">Esterilización</label>
             </div>
             <div>

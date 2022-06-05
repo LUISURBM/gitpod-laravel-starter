@@ -1143,9 +1143,6 @@
   </div>
 </div>
 
-<iframe src="https://calendar.google.com/calendar/embed?src=c_micq7i8s5cmrcd2mmtrtjnsp0g%40group.calendar.google.com&ctz=America%2FBogota" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-<!--/ Bordered Table -->
-
 <hr class="my-5" />
 
 <!-- Borderless Table -->

@@ -87,7 +87,7 @@ class MascotaController extends Controller
       'especie_id' => 'required',
       'genero_id' => 'required',
       'raza_id' => 'required',
-      'esterilizado' => 'required',
+      'esterilizado' => 'boolean',
       'obervaciones' => 'required|max:200',
     ]);
     $validatedData['genero_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['genero_id'])[0]));
@@ -120,6 +120,9 @@ class MascotaController extends Controller
     Log::info($user);
     Log::info($user->id);
     $mascota = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->where('veterinaria.mascota.id', '=', $id)->first();
+
+    
+
     Log::info($mascota);
     return view('mascota.edit', compact('mascota'));
   }
@@ -145,12 +148,12 @@ class MascotaController extends Controller
       'especie_id' => 'required',
       'genero_id' => 'required',
       'raza_id' => 'required',
-      'esterilizado' => 'required',
       'obervaciones' => 'required|max:200',
     ]);
     $validatedData['genero_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['genero_id'])[0]));
     $validatedData['raza_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['raza_id'])[0]));
     $validatedData['especie_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['especie_id'])[0]));
+    $validatedData['esterilizado'] = ($validatedData['especie_id'] ? 1 : 0);
     Log::info($validatedData);
     Mascota::whereId($id)->update($validatedData);
 
