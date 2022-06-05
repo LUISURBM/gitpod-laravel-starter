@@ -18,7 +18,7 @@ class ConsultaController extends Controller
    */
   public function index()
   {
-    Log::info('TurnoController.fecha');
+    Log::info('ConsultaController.index');
     $client = new \Google_Client();
     $credentials_file = '../google.json';
     $client->setAuthConfig($credentials_file);
@@ -58,19 +58,36 @@ class ConsultaController extends Controller
       'mascotas' => $mascotas
     ])->with('veterinario_id', $veterinario_id);
   }
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function buscar(Request $request)
+  {
+    Log::info('ConsultaController.buscar');
+    Log::info($request);
+    $user = Auth::user();
+    $mascotas = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->get();
+    Log::info($mascotas);
+    return view('consulta.buscar', [
+      'mascotas' => $mascotas
+    ]);
+  }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function buscar(Request $request)
+    public function activa(Request $request)
     {
-      Log::info('ConsultaController.buscar');
+      Log::info('ConsultaController.activa');
       Log::info($request);
       $user = Auth::user();
       $mascotas = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->get();
       Log::info($mascotas);
-      return view('consulta.index', [
+      return view('consulta.activa', [
         'mascotas' => $mascotas
       ]);
     }
@@ -115,7 +132,14 @@ class ConsultaController extends Controller
      */
     public function edit($id)
     {
-        //
+      Log::info('ConsultaController.edit');
+      Log::info(decrypt($id));
+      $user = Auth::user();
+      $mascotas = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->get();
+      Log::info($mascotas);
+      return view('consulta.index', [
+        'mascotas' => $mascotas
+      ]);
     }
 
     /**

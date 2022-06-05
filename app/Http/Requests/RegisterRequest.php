@@ -24,8 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-          'email' => 'required|email:rfc,dns|unique:users,email',
-          'username' => 'required|unique:users,username'
+          'correo' => 'required|email:rfc,dns|unique:mysql.veterinaria.user,correo',
+          'nombre' => 'required|unique:mysql.veterinaria.user'
         ];
     }
 }

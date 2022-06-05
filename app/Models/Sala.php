@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profesional extends Model
+class Sala extends Model
 {
     use HasFactory;
-    protected $table = 'veterinaria.profesional';
+    protected $table = 'veterinaria.sala';
     protected $fillable = [
-      'id',
-      'cedula',
       'nombre',
-      'correo',
+      'cantidad_camilla',
+      'cantidad_baños',
+      'ultima_limpieza',
     ];
 }

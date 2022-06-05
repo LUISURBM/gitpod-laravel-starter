@@ -136,7 +136,7 @@
                 </a>
               </li>
               <li class="menu-item">
-                <a href="{{ route('consulta.index') }}" class="menu-link">
+                <a href="{{ route('consulta.activa') }}" class="menu-link">
                   <div data-i18n="Fluid">Atender consulta</div>
                 </a>
               </li>
@@ -209,7 +209,7 @@
                 </a>
               </li>
               <li class="menu-item">
-                <a href="pages-misc-error.html" class="menu-link">
+                <a href="{{ route('servicio.index') }}" class="menu-link">
                   <div data-i18n="Error">Servicios</div>
                 </a>
               </li>

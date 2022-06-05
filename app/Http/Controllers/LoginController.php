@@ -40,9 +40,11 @@ class LoginController extends Controller
       return redirect()->to('login')
         ->withErrors(trans('auth.failed'));
     endif;
-    Log::info('Login An informational message. valid');
+    Log::info('Login An informational message. valid ');
+    Log::info($request->getCredentials());
 
     $user = Auth::getProvider()->retrieveByCredentials($request->getCredentials());
+    Log::info($user);
 
     Auth::login($user);
     Log::info($user);

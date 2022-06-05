@@ -14,10 +14,10 @@
         <div class="row mb-3">
           <div class="input-group">
             <label class="input-group-text" for="mascota_id">Mascota</label>
-            <select class="form-select" id="mascota_id" >
+            <select class="form-select" id="mascota_id">
               <option selected disabled>Selecciona la mascota que quieres sea atendida...</option>
               @foreach($mascotas as $esp)
-              <option value="{{$esp->id}}"><i class="bx bx-edit-alt me-1">{{$esp->nombre}}</i></option>
+              <option value="{{$esp->id}}"  onclick="window.location.href='{{$esp->id}}';">{{$esp->nombre}}</option>
               @endforeach
             </select>
           </div>

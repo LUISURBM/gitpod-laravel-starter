@@ -44,9 +44,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      * Especie Routes
      */
     Route::resource('mascota', 'MascotaController');
+    Route::resource('servicio', 'ServicioController');
     Route::resource('turno', 'TurnoController');
     Route::get('turno-fecha', 'TurnoController@fecha')->name('turno.fecha');
     Route::resource('consulta', 'ConsultaController');
+    Route::get('consulta-activa', 'ConsultaController@activa')->name('consulta.activa');
     Route::post('consulta-buscar', 'ConsultaController@buscar')->name('consulta.buscar');
     /**
      * Logout Routes

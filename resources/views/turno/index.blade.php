@@ -41,7 +41,7 @@
     </div>
   </div>
   <div class="col-lg-6 col-xs-12">
-    <iframe src="https://calendar.google.com/calendar/embed?height=678&wkst=1&bgcolor=%237CB342&ctz=America%2FBogota&mode=MONTH&hl=es&src=NWswOWg0czFsOWNvdnJnZGVmMzRnbGw5ajhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D50000" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%237CB342&ctz=America%2FBogota&title=veterinaria-app&src=ZWNiaDBzdHFmcHBrMG81Z3Buc3RoZWZ2YzhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23D50000" style="border:solid 1px #777" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
   </div>
 </div>
 

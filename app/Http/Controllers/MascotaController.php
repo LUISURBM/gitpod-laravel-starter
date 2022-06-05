@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mascota;
+use App\Models\Responsable;
 use App\Models\ResponsableMascota;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class MascotaController extends Controller
     $user = Auth::user();
     Log::info($user);
     Log::info($user->id);
-    $result = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->get();
+    $result = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.user_id', '=', $user->id)->get();
     Log::info($result);
     return view('mascota.index', [
       'mascotas' => $result
@@ -36,7 +37,7 @@ class MascotaController extends Controller
     $user = Auth::user();
     Log::info($user);
     Log::info($user->id);
-    $result = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->where('veterinaria.mascota.id', '=', $id)->first();
+    $result = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id','=', $user->id)->where('veterinaria.mascota.id', '=', $id)->first();
     $result->especie_id = ''.$result->especie_id.'';
     $result->esterilizado = $result->esterilizado == 1 ? true : false;
     Log::info($result);
@@ -87,18 +88,20 @@ class MascotaController extends Controller
       'especie_id' => 'required',
       'genero_id' => 'required',
       'raza_id' => 'required',
-      'esterilizado' => 'boolean',
+      'esterilizado' => 'nullable|boolean',
       'obervaciones' => 'required|max:200',
     ]);
     $validatedData['genero_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['genero_id'])[0]));
     $validatedData['raza_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['raza_id'])[0]));
     $validatedData['especie_id'] = (preg_replace('/\s+/', '',explode('~',$validatedData['especie_id'])[0]));
-    $validatedData['esterilizado'] = $validatedData['esterilizado'] == 'on' ? true : false;
+    $validatedData['esterilizado'] = isset($validatedData['esterilizado']) && $validatedData['esterilizado'] == 'on' ? true : false;
     Log::info($validatedData);
     $show = Mascota::create($validatedData);
     Log::info($show);
+    $responsable_id = Responsable::select('veterinaria.responsable.id')->where('veterinaria.responsable.user_id', '=', $user->id)->first();
+    Log::info($responsable_id);
     $responsable = new ResponsableMascota();
-    $responsable->responsable_id = $user->id;
+    $responsable->responsable_id = $responsable_id->id;
     $responsable->mascota_id = $show->id;
     $responsable->save();
     // $responsableMascota = ResponsableMascota::create($responsable);
@@ -119,7 +122,8 @@ class MascotaController extends Controller
     $user = Auth::user();
     Log::info($user);
     Log::info($user->id);
-    $mascota = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.id', $user->id)->where('veterinaria.mascota.id', '=', $id)->first();
+    Log::info($id);
+    $mascota = Mascota::select('veterinaria.mascota.*', 'veterinaria.genero.nombre as genero', 'veterinaria.raza.nombre as raza', 'veterinaria.especie.nombre as especie')->join('veterinaria.responsable_mascota', 'veterinaria.mascota.id', '=', 'responsable_mascota.mascota_id')->join('veterinaria.responsable', 'responsable_mascota.responsable_id', '=', 'veterinaria.responsable.id')->join('veterinaria.genero', 'mascota.genero_id', '=', 'veterinaria.genero.id')->join('veterinaria.raza', 'mascota.raza_id', '=', 'veterinaria.raza.id')->join('veterinaria.especie', 'mascota.especie_id', '=', 'veterinaria.especie.id')->where('veterinaria.responsable.user_id','=', $user->id)->where('veterinaria.mascota.id', '=', $id)->first();
 
     
 

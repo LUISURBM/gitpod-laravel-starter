@@ -434,7 +434,7 @@
   <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
-        <!-- Register -->
+        <!-- Register Card -->
         <div class="card">
           <div class="card-body">
             <!-- Logo -->
@@ -486,35 +486,47 @@
             </div>
             <!-- /Logo -->
             <h4 class="mb-2">🦓🐷🐯🐸🐼🐨🐔🦄🐰🦊🙈🐶🐺😹🐑🦎🦈🦕🦔🐇🐿🦘🐫🐃🐕🦏🐳🦛🐠🦆🦚🦉🐌🕷🦠</h4>
-            <h4 class="mb-2">¡Bienvenido! 👋</h4>
-            <p class="justify-content-center">Ingresa para comenzar</p>
+            <p class="mb-4">¡Por el bienestar de la sociedad animal!</p>
 
-            <form id="formAuthentication" class="mb-3" action="{{ route('login.perform') }}" method="post">
+            <form id="formAuthentication" class="mb-3" action="{{ route('register.perform') }}" method="post">
               <input type="hidden" name="_token" value="{{ csrf_token() }}" />
               <div class="mb-3">
-                <label for="correo" class="form-label">Tu correo o tu usuario</label>
-                <input type="text" class="form-control" id="email" name="correo" placeholder="Escribe tu correo o tu usuario" autofocus />
+                <label for="nombre" class="form-label">Tus Nombres</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tus nombres" autofocus />
               </div>
               <div class="mb-3">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="remember-me" />
-                  <label class="form-check-label" for="remember-me"> Recuerdame </label>
+                <label for="correo" class="form-label">Correo eléctronico</label>
+                <input type="text" class="form-control" id="correo" name="correo" placeholder="Escribe tu correo" />
+              </div>
+              <div class="mb-3 form-password-toggle">
+                <label class="form-label" for="password">Frase de seguridad</label>
+                <div class="input-group input-group-merge">
+                  <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                  <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
+
               <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" type="submit">¡Entrar ahora!</button>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
+                  <label class="form-check-label" for="terms-conditions">
+                    Aceptación
+                    <a href="javascript:void(0);">politícas privacidad & terminos. </a>
+                  </label>
+                </div>
               </div>
+              <button class="btn btn-primary d-grid w-100" type="submit">Empezar</button>
             </form>
 
             <p class="text-center">
-              <span>Primera vez?</span>
-              <a href="{{ route('register.show') }}">
-                <span>Create una cuenta 🐲</span>
+              <span>No es tu primera vez?</span>
+              <a href="login">
+                <span>Identifícate</span>
               </a>
             </p>
           </div>
         </div>
-        <!-- /Register -->
+        <!-- Register Card -->
       </div>
     </div>
   </div>
